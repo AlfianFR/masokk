@@ -8,9 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Resep;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -22,7 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        // 'role',
     ];
 
     /**
@@ -47,5 +49,25 @@ class User extends Authenticatable
     public function resep()
     {
         return $this->hasMany(Resep::class);
+    }
+
+    public function isAdmin(){
+        if($this->role_id === 1){
+            return true;
+        }
+
+        else{
+            return false;
+        }
+    }
+
+    public function isPenulis(){
+        if($this->role_id === 2){
+            return true;
+        }
+
+        else{
+            return false;
+        }
     }
 }

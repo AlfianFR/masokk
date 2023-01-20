@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Auth;
 
-class Admin
+class Penulis
 {
     /**
      * Handle an incoming request.
@@ -19,7 +18,7 @@ class Admin
     {
         if (Auth::check) {
 
-            if (Auth::user()->isAdmin()){
+            if (Auth::user()->isPenulis()){
                 return $next($request);
             }
 

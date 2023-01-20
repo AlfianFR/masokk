@@ -5,6 +5,7 @@ use App\Http\Controllers\KotaController;
 use App\Http\Controllers\ResepController;
 use App\Http\Controllers\AllresepController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\loginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,13 @@ Route::get('/', function () {
     return view('user');
 });
 
-Auth::routes();
+Auth::routes(); 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin',
-    'middleware' => ['auth', 'isAdmin']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth',
+
+'role:admin']], function () {
         Route::get('/', function () {
             return view('layouts.admin');
         })->name('admin');
@@ -44,3 +46,5 @@ Route::post('register', [RegisterController::class,'create'])->name('register-cr
 // Route::post('login-user', 'Auth\LoginController@login')->name('loginpost');
 
 // Route::resource('/kota', KotaController::class);
+
+Route::get('/logout', [loginController::class, 'logout']);
