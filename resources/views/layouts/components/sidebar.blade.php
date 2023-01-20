@@ -29,16 +29,23 @@
  
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-      <a class="nav-link" href="kota">
-          <i class="fas fa-fw fa-table"></i>
-          <span>table</span></a>
+      <a class="nav-link" href="/admin/kota">
+          <i class="fas fa-fw fa-city"></i>
+          <span>kota</span></a>
   </li>
 
-  <!-- Nav Item - Tables -->
   <li class="nav-item">
-      <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+    <a class="nav-link" href="resep">
+      <i class="fas fa-fw fa-money"></i>
+      <span class="menu-title">Resep Terbaru</span>
+      <i class="menu-title"></i>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="allresep">
+      <i class="icon-paper menu-icon"></i>
+      <span class="menu-title">Resep Masakan</span>
+    </a>
   </li>
 
   <!-- Divider -->
@@ -49,11 +56,6 @@
       <button class="rounded-circle border-0" id="sidebarToggle"></button>
   </div>
 
-  <!-- Sidebar Message -->
-  <div class="sidebar-card d-none d-lg-flex">
-      <img class="sidebar-card-illustration mb-2" src="{{asset('assets/img/undraw_rocket.svg')}}" alt="...">
-      <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-      <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-  </div>
+
 
 </ul>
