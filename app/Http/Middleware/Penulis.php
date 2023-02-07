@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class Penulis
 {
@@ -16,14 +17,15 @@ class Penulis
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check) {
+        // if (Auth::check) {
 
-            if (Auth::user()->isPenulis()){
-                return $next($request);
-            }
+        //     if (Auth::user()->isPenulis()){
+        //         return $next($request);
+        //     }
 
-        }
-        
-        return redirect ('errors');
+        // }
+
+        // return redirect ('errors');
+        return $next($request);
     }
 }

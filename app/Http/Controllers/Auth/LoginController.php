@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -33,32 +34,16 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function login(Request $request)
-    {
-        $input = $request->all();
-
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->role == "admin") {
-                return redirect('petugas/dashboard');
-            }
-            elseif (auth()->user()->role == "user") {
-                return redirect()->route('index');} else {
-                return redirect()->route('index');
-            }
-        } else {
-            return redirect('login-user')
-                ->with('error', 'Email-Address And Password Are Wrong.');
-        }
-
-    }
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('isPenulis')->except('logout');
     }
 
+
+
+    public function logout()
+    {
+        Auth::logout();
+        // return redirect('/login'); // ini untuk redirect setelah logout
+    }
 }
