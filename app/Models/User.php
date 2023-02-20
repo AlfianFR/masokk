@@ -24,7 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        // 'role',
+
     ];
 
     /**
@@ -51,23 +51,5 @@ class User extends Authenticatable
         return $this->hasMany(Resep::class);
     }
 
-    public function isAdmin(){
-        if($this->role_id === 1){
-            return true;
-        }
-
-        else{
-            return false;
-        }
-    }
-
-    public function isPenulis(){
-        if($this->role_id === 2){
-            return true;
-        }
-
-        else{
-            return false;
-        }
-    }
+    
 }

@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Role;
 use App\Models\User;
+use App\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -16,29 +16,31 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        
-        $roleadmin = new Role();
-        $roleadmin->name = "Admin";    
-        $roleadmin->save();
-
-        $rolepenulis = new Role();
-        $rolepenulis->name = "penulis";
-        $rolepenulis->save();
-
-
-        $admin = new \App\Models\User();
-        $admin->name = "Admin";
-        $admin->email = "admin@gmail.com";
-        $admin->password = bcrypt("rahasia");
-        $admin->role_id =1;
+        $admin = new User();
+        $admin->name = "alfian";
+        $admin->email = "alfian@admin.com";
+        $admin->password = bcrypt('admin123');
         $admin->save();
-     
 
-        $admin = new \App\Models\User();
-        $admin->name = "penulis";
-        $admin->email = "penulis@gmail.com";
-        $admin->password = bcrypt("penulis");
-        $admin->save();
-       
+        $penulis = new User();
+        $penulis->name = "alfianFR";
+        $penulis->email = "alfian@penulis.com";
+        $penulis->password = bcrypt('penulis123');
+        $penulis->save();
+
+        $role1 = new Role();
+        $role1->name = "admin";
+        $role1->display_name = "admin";
+        $role1->description = "-";
+        $role1->save();
+
+        $role2 = new Role();
+        $role2->name = "penulis";
+        $role2->display_name = "penulis";
+        $role2->description = "-";
+        $role2->save();
+
+        $admin->attachRole($role1);
+        $penulis->attachRole($role2);
     }
 }

@@ -17,15 +17,18 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        return view('home');
+    }
+
+
+
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(){
-        if (Auth::user()->role == 'admin') {
-            return redirect('/admin');
-        }
-        return view('home');
-    }
+
 }

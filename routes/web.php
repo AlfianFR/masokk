@@ -6,6 +6,8 @@ use App\Http\Controllers\ResepController;
 use App\Http\Controllers\AllresepController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\loginController;
+use App\Http\middleware\Penulis;
+use App\Http\middleware\Admin;
 
 
 Route::get('/', function () {
@@ -47,16 +49,14 @@ Auth::routes();
 //     });
 // }
 
-// route::group(['prefix' => 'admin', 'middleware' => ['auth' => 'role:isAdmin']], function() {
-//     route::get('/', function() {
-//         return "oy ipul";
-//     });
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function() {
+    route::get('/', function(){
+        return view('admin.index');
+    });
+});
 
-// });
-
-// route::group(['prefix' => 'penulis', 'middleware' => ['auth' => 'role:isPenulis']], function() {
-//     route::get('/', function() {
-//         return "oy ipul";
-//     });
-
-// });
+Route::group(['prefix' => 'penulis', 'middleware' => ['auth', 'role:penulis']], function() {
+    route::get('/test', function(){
+        return "test penulis";
+    });
+});

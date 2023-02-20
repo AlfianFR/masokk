@@ -30,12 +30,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
 
-        'approver+' => [
-            'isPenulis' => \App\Http\Middleware\Penulis::class,
-            'isAdmin' => \App\Http\Middleware\Admin::class,
 
-
-        ],
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
