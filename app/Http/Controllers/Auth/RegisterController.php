@@ -53,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -65,13 +65,12 @@ class RegisterController extends Controller
      */
     protected function create(Request $data)
     {
-        
          User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role'],
+            // 'role' => $data['role'],
         ]);
-        return view('/share');
+        return redirect()->route('login')->with('toast_success', 'Register Berhasil');
     }
 }
